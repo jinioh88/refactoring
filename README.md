@@ -71,3 +71,29 @@
 - 기호 상수가 적합하지 않은 경우
   - for 반복에서 배열 길이를 나타내는 데 기호 상수를 쓰는 건 적절하지 않다. lengh를 쓰자.
 
+---
+## 제어 플래그 때문에 코드가 읽기 어려운 경우 제어플래그 삭제
+1. 리팩토링
+- 제어 플래그 삭제
+  - 플래그란 프로그래밍에선 '상태를 기록하고 처리 흐름을 제어하기 위한 boolean 타입 변수'를 의미하낟. 
+  - 제어플래그를 지나치게 사용하면 처리 흐름을 파악하기 어려워져 때론 프로그램 전체를 파악하는 데 어려움을 겪는다. 
+  - 제어 플래그 대신 break, continue, return 등을 써 처리 흐름을 제어한다.
+  
+2. 예제 프로그램
+- 리팩토링 전
+  ```java
+  public class FindInt {
+      public static boolean find(int[] data, int target) {
+          boolean flag = false;
+  
+          for(int i = 0; i < data.length && !flag; i++) {
+              if(data[i] == target) {
+                  flag = true;
+              }
+          }
+          return flag;
+      }
+  }
+  ```
+- 리팩토링 실행(break 사용)
+  - 위에서 flag 라는 변수명을 썻는데, 제어플래그에는 true일 때 뭘 의미하는지 나타내는 이름을 붙이는게 좋아 found라고 바꿨다.
