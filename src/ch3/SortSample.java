@@ -18,12 +18,34 @@ public class SortSample {
                     m = y;
                 }
             }
-            int v = data[m];  // data[m]은 최솟값이어야 함.
+            assert isMin(m, x, data.length - 1);
+            int v = data[m];
             data[m] = data[x];
             data[x] = v;
-            // 여기선 정렬되 있어야 함
+            assert isSorted(0, x + 1);
         }
     }
+
+    private boolean isSorted(int start, int end) {
+        for(int i = start; i < end; i++) {
+            if(data[i] > data[i+1]) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private boolean isMin(int pos, int start, int end) {
+        for(int i = start; i <= end; i++) {
+            if(data[pos] > data[i]) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
 
     @Override
     public String toString() {
