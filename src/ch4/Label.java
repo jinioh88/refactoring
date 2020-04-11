@@ -14,4 +14,12 @@ public class Label {
     public String toString() {
         return "\"" + _label + "\"";
     }
+
+    public boolean isNull() {
+        return false;
+    }
+
+    public static Label newNull() {
+        return NullLabel.getInstance();
+    }
 }
