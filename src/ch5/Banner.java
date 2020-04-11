@@ -8,23 +8,24 @@ public class Banner {
     }
 
     public void print(int times) {
-        // 테두리
+        printBorder();
+
+        printContent(times);
+
+        printBorder();
+    }
+
+    private void printBorder() {
         System.out.print("+");
         for(int i = 0; i < content.length(); i++) {
             System.out.print("-");
         }
         System.out.println("+");
+    }
 
-        // 내용
+    private void printContent(int times) {
         for(int i = 0; i < times; i++) {
             System.out.println("|" + content + "|");
         }
-
-        // 테두리
-        System.out.print("+");
-        for(int i = 0; i < content.length(); i++) {
-            System.out.print("-");
-        }
-        System.out.println("+");
     }
 }
