@@ -24,4 +24,16 @@ public class ShapeLine extends Shape {
     private void drawLine() {
         System.out.println("drawLine: " + this.toString());
     }
+
+    public static ShapeLine createShapeLie(int startX, int startY, int endX, int endY) {
+        return new ShapeLine(startX, startY, endX, endY);
+    }
+
+    public static ShapeRectangle createRectangle(int startX, int startY, int endX, int endY) {
+        return new ShapeRectangle(startX, startY, endX, endY);
+    }
+
+    public static ShapeOval createOval(int startX, int startY, int endX, int endY) {
+        return new ShapeOval(startX, startY, endX, endY);
+    }
 }

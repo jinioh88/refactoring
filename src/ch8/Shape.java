@@ -23,7 +23,7 @@ public abstract class Shape {
 
     public abstract void draw();
 
-    public static Shape createShape(ShapeFactory factory, int startX, int startY, int endX, int endY) {
+    public static Shape create(ShapeFactory factory, int startX, int startY, int endX, int endY) {
         return factory.create(startX, startY, endX, endY);
     }
 
