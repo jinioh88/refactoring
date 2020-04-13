@@ -1,5 +1,7 @@
 package ch10;
 
+import ch10.exception.InvalidCommandException;
+
 import java.util.StringTokenizer;
 
 public class Robot {
@@ -13,38 +15,36 @@ public class Robot {
 
     public void execute(String commandSequence) {
         StringTokenizer tokenizer = new StringTokenizer(commandSequence);
-        while(tokenizer.hasMoreTokens()) {
-            String token = tokenizer.nextToken();
-            if(!executeCommand(token)) {
-                System.out.println("Invalid command: " + token);
-                break;
+        try {
+            while(tokenizer.hasMoreTokens()) {
+                String token = tokenizer.nextToken();
+                executeCommand(token);
             }
+        } catch (InvalidCommandException e) {
+            System.out.println("Invalid command: " + e.getMessage());
         }
+
     }
 
-    private boolean executeCommand(String commandString) {
+    private void executeCommand(String commandString) throws InvalidCommandException {
         Command command = Command.parseCommand(commandString);
-        if(command == null) {
-            return false;
-        }
-
-        return executeCommand(command);
+        command.execute(this);
     }
 
-    private boolean executeCommand(Command command) {
-        if(command == Command.FORWARD) {
-            position.relativeMove(direction.x, direction.y);
-        } else if(command == Command.BACKWARD) {
-            position.relativeMove(-direction.x, -direction.y);
-        } else if(command == Command.TURN_RIGHT) {
-            direction.setDirection(direction.x, direction.y);
-        } else if(command == Command.TURN_LEFT) {
-            direction.setDirection(-direction.x, -direction.y);
-        } else {
-            return false;
-        }
+    public void forward() {
+        position.relativeMove(direction.x, direction.y);
+    }
 
-        return true;
+    public void backward() {
+        position.relativeMove(-direction.x, -direction.y);
+    }
+
+    public void right() {
+        direction.setDirection(direction.y, direction.x);
+    }
+
+    public void left() {
+        direction.setDirection(direction.y, direction.x);
     }
 
     @Override
