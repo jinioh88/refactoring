@@ -1,3 +1,8 @@
+#
+#Tue Apr 14 22:12:14 KST 2020
+James=james@example.com
 hyuki@example.com=Hiroshi Yuki
-jinioh@example.com=Oh SEJIN
+Hiroshi\ Yuki=hyuki@example.com
 james@example.com=James
+jinioh@example.com=Oh SEJIN
+SEJIN=jinioh@example.com
