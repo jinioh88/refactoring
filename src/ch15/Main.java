@@ -12,7 +12,7 @@ public class Main {
     private static final String SAMPLE_CSV_FILE = "file.csv";
 
     public static void main(String[] args) throws IOException {
-        new CSVStringTablePrinter(SAMPLE_CSV_STRING).print();
-        new CSVFileTreePrinter(SAMPLE_CSV_FILE).print();
+        new CSVFileReader(SAMPLE_CSV_STRING);
+        new CSVFileReader(SAMPLE_CSV_FILE);
     }
 }
